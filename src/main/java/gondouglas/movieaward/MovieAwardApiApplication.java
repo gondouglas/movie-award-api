@@ -1,13 +1,13 @@
-package gondouglas.piorfilmeapi;
+package gondouglas.movieaward;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PiorFilmeApiApplication {
+public class MovieAwardApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PiorFilmeApiApplication.class, args);
+		SpringApplication.run(MovieAwardApiApplication.class, args);
 	}
 
 }
