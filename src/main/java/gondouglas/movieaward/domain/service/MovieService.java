@@ -27,4 +27,8 @@ public class MovieService {
 	public void deleteById(Long id) {
 		this.movieRepository.deleteById(id);
 	}
+
+	public List<Movie> listAllWinners() {
+		return movieRepository.findAllByWinnerTrue();
+	}
 }

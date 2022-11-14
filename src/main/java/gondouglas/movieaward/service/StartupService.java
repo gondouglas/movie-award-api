@@ -3,9 +3,10 @@ package gondouglas.movieaward.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import gondouglas.movieaward.adapter.MovieCsvAdapter;
+import gondouglas.movieaward.adapter.DomainCsvAdapter;
 import gondouglas.movieaward.adapter.OpenCsvAdapter;
 import gondouglas.movieaward.application.MovieApplication;
+import gondouglas.movieaward.application.mapper.CsvRowToMovieDTOMapper;
 
 @Service
 public class StartupService {
@@ -19,6 +20,9 @@ public class StartupService {
 
 	
 	public void execute() {
-		this.movieApplication.executeImportation(new MovieCsvAdapter(new OpenCsvAdapter(), "movielist.csv"));
+		OpenCsvAdapter csvService = new OpenCsvAdapter();
+		String pathFile = "movielist.csv";
+
+		this.movieApplication.executeImportation(new DomainCsvAdapter<>(csvService, pathFile, new CsvRowToMovieDTOMapper()));
 	}
 }

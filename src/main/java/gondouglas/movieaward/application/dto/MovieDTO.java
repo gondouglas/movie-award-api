@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class MovieDTO {
+public class MovieDTO implements DomainDTO {
 
 	private Long id;
 	

@@ -15,8 +15,6 @@ import gondouglas.movieaward.service.CsvService;
 
 public class OpenCsvAdapter implements CsvService {
 
-	private static final String CSV_SEPARATOR = ";";
-
 	@Override
 	public CsvFile readFile(String path) throws IOException {
 		CsvFile csvFile = new CsvFile();

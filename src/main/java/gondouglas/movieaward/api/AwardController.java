@@ -18,8 +18,8 @@ public class AwardController {
 	private AwardApplication awardApplication;
 
 	@GetMapping
-	public ResponseEntity<AwardIntervalDTO> buscarIntervaloMovieawards() {
-		AwardIntervalDTO dto = awardApplication.buscarIntervaloMovieaward();
+	public ResponseEntity<AwardIntervalDTO> searchInvervalAward() {
+		AwardIntervalDTO dto = awardApplication.searchInvervalAward();
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 }

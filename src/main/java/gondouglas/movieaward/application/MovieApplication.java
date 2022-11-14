@@ -25,6 +25,10 @@ public class MovieApplication {
 		return movieService.listAll().stream().map(MovieToMovieDTOMapper::toDTO).collect(Collectors.toList());
 	}
 
+	public List<MovieDTO> listAllWinners() {
+		return movieService.listAllWinners().stream().map(MovieToMovieDTOMapper::toDTO).collect(Collectors.toList());
+	}
+
 	public MovieDTO save(MovieDTO dto) {
 		Movie entity = MovieToMovieDTOMapper.toEntity(dto);
 		Movie saved = movieService.save(entity);
@@ -38,6 +42,10 @@ public class MovieApplication {
 		}
 
 		return saved;
+	}
+
+	public void deleteById(Long id) {
+		movieService.deleteById(id);
 	}
 
 	public void executeImportation(ImportService<MovieDTO> importService) {

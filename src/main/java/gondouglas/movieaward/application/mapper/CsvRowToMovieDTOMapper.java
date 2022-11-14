@@ -4,11 +4,9 @@ import gondouglas.movieaward.application.dto.MovieDTO;
 import gondouglas.movieaward.application.enumeration.YesNoEnum;
 import gondouglas.movieaward.service.CsvService.CsvRow;
 
-public class CsvRowToMovieDTOMapper {
+public class CsvRowToMovieDTOMapper implements CsvRowToDomainDTOMapper<MovieDTO> {
 
-	private CsvRowToMovieDTOMapper(){}
-
-	public static MovieDTO toDTO(CsvRow csvRow) {
+	public MovieDTO toDTO(CsvRow csvRow) {
 		MovieDTO dto = new MovieDTO();
 		dto.setYear(Integer.parseInt(csvRow.getCells().get(0).getValue()));
 		dto.setTitle(csvRow.getCells().get(1).getValue());
@@ -17,5 +15,4 @@ public class CsvRowToMovieDTOMapper {
 		dto.setWinner(YesNoEnum.YES.options().contains(csvRow.getCells().get(4).getValue()));
 		return dto;
 	}
-
 }
