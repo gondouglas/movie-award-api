@@ -14,8 +14,12 @@ import gondouglas.movieaward.application.dto.AwardIntervalDTO;
 @RequestMapping("/api/awards")
 public class AwardController {
 
+	private final AwardApplication awardApplication;
+	
 	@Autowired
-	private AwardApplication awardApplication;
+	public AwardController(AwardApplication awardApplication) {
+		this.awardApplication = awardApplication;
+	}
 
 	@GetMapping
 	public ResponseEntity<AwardIntervalDTO> searchInvervalAward() {
