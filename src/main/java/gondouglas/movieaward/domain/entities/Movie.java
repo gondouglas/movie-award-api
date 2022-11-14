@@ -1,7 +1,9 @@
-package gondouglas.movieaward.domain;
+package gondouglas.movieaward.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,10 +17,11 @@ import lombok.Setter;
 public class Movie {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_MOVIE")
 	private Long id;
 	
-	@Column(name = "YEAR")
+	@Column(name = "MOVIE_YEAR")
 	private Integer year;
 	
 	@Column(name = "TITLE")

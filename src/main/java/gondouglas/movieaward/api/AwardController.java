@@ -11,7 +11,7 @@ import gondouglas.movieaward.application.AwardApplication;
 import gondouglas.movieaward.application.dto.AwardIntervalDTO;
 
 @RestController
-@RequestMapping("/api/movieawards")
+@RequestMapping("/api/awards")
 public class AwardController {
 
 	@Autowired
