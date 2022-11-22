@@ -64,4 +64,20 @@ public class AwardIntegrationTest {
 			assertEquals(expected, interval, "");
 		}
 	}
+
+	
+	@Test
+	@DisplayName("deve apresentar dois resultados min com intervalo igual a 1")
+	public void testGetMinIntervalSameProducer() throws Exception {
+		AwardController controller = new AwardController(awardApplication);
+		AwardIntervalDTO searchInvervalAward = controller.searchInvervalAward().getBody();
+		int expected = 1;
+
+		assertTrue(searchInvervalAward.getMin().size() >= 2, "");
+
+		for (AwardDTO dto : searchInvervalAward.getMin()) {
+			Integer interval = dto.getInterval();
+			assertEquals(expected, interval, "");
+		}
+	}
 }
