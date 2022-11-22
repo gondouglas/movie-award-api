@@ -8,10 +8,16 @@ public class AwardDTO {
 	
 	private String producer;
 
-	private Integer interval;
-
 	private Integer previousWin;
 
 	private Integer followingWin;
+
+	public Integer getInterval() {
+		if (previousWin == null || followingWin == null) {
+			return 0;
+		}
+
+		return followingWin - previousWin;
+	}
 
 }

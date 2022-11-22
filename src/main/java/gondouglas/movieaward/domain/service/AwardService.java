@@ -33,7 +33,7 @@ public class AwardService {
 	private List<AwardDTO> generateIntervals(List<MovieDTO> winners) {
 		List<AwardDTO> list = new ArrayList<>();
 
-		List<MovieDTO> separateProducers = separateProducers(winners);
+		List<MovieDTO> separateProducers = separateProducers(winners).stream().sorted((o1, o2) -> o1.getYear().compareTo(o2.getYear())).collect(Collectors.toList());
 
 		separateProducers.stream().collect(Collectors.groupingBy(x -> x.getProducers(), LinkedHashMap::new, Collectors.toList()))
 		.forEach((producer, movies) -> {
@@ -47,17 +47,14 @@ public class AwardService {
 					if (dto.getFollowingWin() != null) {
 						dto.setPreviousWin(dto.getFollowingWin());
 					}
-	
 					dto.setFollowingWin(movie.getYear());
-					
-					int interval = dto.getFollowingWin() - dto.getPreviousWin();
 	
-					dto.setInterval(interval);
+					list.add(dto);
+					
+					dto = new AwardDTO();
+					dto.setProducer(producer);
+					dto.setPreviousWin(movie.getYear());
 				}
-			}
-
-			if (dto.getInterval() != null) {
-				list.add(dto);
 			}
 		});
 
